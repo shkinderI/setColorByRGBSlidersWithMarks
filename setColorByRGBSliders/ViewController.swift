@@ -7,13 +7,66 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+final class ViewController: UIViewController {
+    
+    @IBOutlet var colorArea: UIView!
+    
+    @IBOutlet var sliderRed: UISlider!
+    @IBOutlet var sliderGreen: UISlider!
+    @IBOutlet var sliderBlue: UISlider!
+    
+    @IBOutlet var valueRed: UILabel!
+    @IBOutlet var valueGreen: UILabel!
+    @IBOutlet var valueBlue: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        colorArea.layer.cornerRadius = 10
+        setupRedSlider()
+        setupGreenSlider()
+        setupBlueSlider()
+        settingValues()
     }
-
-
+    
+    @IBAction func myChanger(_ sender: Any) {
+        colorArea.backgroundColor = UIColor(red: CGFloat(sliderRed.value), green: CGFloat(sliderGreen.value), blue: CGFloat(sliderBlue.value), alpha: 1)
+        valueRed.text = sliderRed.value.formatted()
+    }
+    
+    @IBAction func myChangerForGreen(_ sender: Any) {
+        colorArea.backgroundColor = UIColor(red: CGFloat(sliderRed.value), green: CGFloat(sliderGreen.value), blue: CGFloat(sliderBlue.value), alpha: 1)
+        valueGreen.text = sliderGreen.value.formatted()
+    }
+    
+    
+    @IBAction func myChangerForBlue(_ sender: Any) {
+        colorArea.backgroundColor = UIColor(red: CGFloat(sliderRed.value), green: CGFloat(sliderGreen.value), blue: CGFloat(sliderBlue.value), alpha: 1)
+        valueBlue.text = sliderBlue.value.formatted()
+    }
+    
+    
+    private func setupRedSlider() {
+        sliderRed.maximumValue = 0
+        sliderRed.maximumValue = 1
+        sliderRed.minimumTrackTintColor = .red
+    }
+    private func setupGreenSlider() {
+        sliderGreen.maximumValue = 0
+        sliderGreen.maximumValue = 1
+        sliderGreen.minimumTrackTintColor = .green
+    }
+    private func setupBlueSlider() {
+        sliderBlue.maximumValue = 0
+        sliderBlue.maximumValue = 1
+        sliderBlue.minimumTrackTintColor = .blue
+    }
+    
+        func settingValues() {
+            valueRed.text = sliderRed.value.formatted()
+            valueGreen.text = sliderGreen.value.formatted()
+            valueBlue.text = sliderBlue.value.formatted()
+    
+        }
+    
 }
 
