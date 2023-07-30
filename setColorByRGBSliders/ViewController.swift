@@ -9,6 +9,7 @@ import UIKit
 
 final class ViewController: UIViewController {
     
+    // MARK: IB Outlets
     @IBOutlet var colorArea: UIView!
     
     @IBOutlet var sliderRed: UISlider!
@@ -19,6 +20,7 @@ final class ViewController: UIViewController {
     @IBOutlet var valueGreen: UILabel!
     @IBOutlet var valueBlue: UILabel!
     
+    // MARK: - View life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         colorArea.layer.cornerRadius = 10
@@ -28,6 +30,7 @@ final class ViewController: UIViewController {
         settingValues()
     }
     
+    //MARK: - IB Actions
     @IBAction func myChanger(_ sender: Any) {
         colorArea.backgroundColor = UIColor(red: CGFloat(sliderRed.value), green: CGFloat(sliderGreen.value), blue: CGFloat(sliderBlue.value), alpha: 1)
         valueRed.text = sliderRed.value.formatted()
@@ -44,7 +47,7 @@ final class ViewController: UIViewController {
         valueBlue.text = sliderBlue.value.formatted()
     }
     
-    
+    // MARK: - Private Methods
     private func setupRedSlider() {
         sliderRed.maximumValue = 0
         sliderRed.maximumValue = 1
@@ -61,12 +64,12 @@ final class ViewController: UIViewController {
         sliderBlue.minimumTrackTintColor = .blue
     }
     
-        func settingValues() {
-            valueRed.text = sliderRed.value.formatted()
-            valueGreen.text = sliderGreen.value.formatted()
-            valueBlue.text = sliderBlue.value.formatted()
-    
-        }
+    private func settingValues() {
+        valueRed.text = sliderRed.value.formatted()
+        valueGreen.text = sliderGreen.value.formatted()
+        valueBlue.text = sliderBlue.value.formatted()
+        
+    }
     
 }
 
